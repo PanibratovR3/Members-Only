@@ -23,12 +23,22 @@
             <% if (locals.messages) {%>
                 <% messages.forEach((message) => { %>
                     <div>
+                        <% if (locals.user && user.ismember) { %>
+                            <div class="from">
+                                Message from <%= message.firstname %> <%= message.lastname %> (<%= message.username %>)
+                            </div>
+                        <% }; %>
                         <div class="title">
                             <%= message.title %>
                         </div>
                         <div class="message">
                             <%= message.message %>
                         </div>
+                        <% if (locals.user && user.ismember) { %>
+                            <div class="timestamp">
+                                Posted: <%= message.messagetime.toUTCString() %>
+                            </div>
+                        <% } %>
                     </div>
                 <% }); %>
             <% }; %>
