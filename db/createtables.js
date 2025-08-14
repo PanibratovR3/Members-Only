@@ -6,7 +6,7 @@ const SQL = `
         Id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         FirstName VARCHAR(10) NOT NULL,
         LastName VARCHAR(10) NOT NULL,
-        Username VARCHAR(20) NOT NULL,
+        Username VARCHAR(50) NOT NULL,
         Password VARCHAR(255) NOT NULL,
         IsMember BOOLEAN NOT NULL,
         IsAdmin BOOLEAN NOT NULL
@@ -15,7 +15,7 @@ const SQL = `
     CREATE TABLE IF NOT EXISTS messages (
         Id INTEGER NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
         UserId INTEGER NOT NULL,
-        Title VARCHAR(10) NOT NULL,
+        Title VARCHAR(30) NOT NULL,
         MessageTime TIMESTAMP NOT NULL,
         Message TEXT NOT NULL,
         CONSTRAINT fk_userid FOREIGN KEY (UserId) REFERENCES users(Id)
