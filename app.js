@@ -3,11 +3,47 @@ const path = require("path");
 const { body, validationResult, check } = require("express-validator");
 const bcrypt = require("bcryptjs");
 const queries = require("./db/queries");
+const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
+app.use(session({ secret: "secret", resave: false, saveUninitialized: false }));
+app.use(passport.session());
+
+passport.use(
+  new LocalStrategy(async (username, password, done) => {
+    try {
+      const user = await queries.getUserByUsername(username);
+      if (!user) {
+        return done(null, false, { message: "Incorrect user" });
+      }
+      const match = await bcrypt.compare(password, user.password);
+      if (!match) {
+        return done(null, false, { message: "Incorrect password" });
+      }
+      return done(null, user);
+    } catch (error) {
+      return done(error);
+    }
+  })
+);
+
+passport.serializeUser((user, done) => {
+  done(null, user.id);
+});
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await queries.getUserById(id);
+    done(null, user);
+  } catch (err) {
+    done(err);
+  }
+});
 
 const nameAlphabetError = "must contain only letters";
 const nameMinimumLengthError = "must contain at least 3 letters.";
@@ -45,7 +81,7 @@ const validateNewUser = [
 const PORT = 3000;
 
 app.get("/", (request, response) => {
-  response.render("index");
+  response.render("index", { user: request.user });
 });
 
 const signUpPostArray = [
@@ -80,6 +116,28 @@ app.post("/sign-up", signUpPostArray);
 
 app.get("/log-in", (request, response) => {
   response.render("log-in-form");
+});
+
+app.post(
+  "/log-in",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/",
+  })
+);
+
+app.get("/log-out", (request, response, next) => {
+  request.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    response.redirect("/");
+  });
+});
+
+app.use((error, request, response, next) => {
+  console.error("ERROR!");
+  console.error(error.name, " : ", error.message);
 });
 
 app.listen(PORT, () =>
