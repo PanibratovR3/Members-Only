@@ -19,8 +19,17 @@ async function getUserById(id) {
   return rows[0];
 }
 
+async function getUsersByUsernameAndPassword(username, password) {
+  const { rows } = await pool.query(
+    "SELECT * FROM users WHERE username = $1 OR password = $2",
+    [username, password]
+  );
+  return rows;
+}
+
 module.exports = {
   addNewUser,
   getUserByUsername,
   getUserById,
+  getUsersByUsernameAndPassword,
 };

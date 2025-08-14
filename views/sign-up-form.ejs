@@ -13,6 +13,11 @@
                 <% }); %>
             <% }; %>
         </ul>
+        <ul>
+            <% if (locals.errorsExist) { %>
+                <li><%= errorsExist.msg %></li>
+            <% }; %>
+        </ul>
         <div>
             <form action="/sign-up" method="POST">
                 <div>

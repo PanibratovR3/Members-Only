@@ -96,14 +96,24 @@ const signUpPostArray = [
       const { firstName, lastName, username, password, isAdmin } = request.body;
       const isAdminFlag = isAdmin === "on" ? true : false;
       const hashedPassword = await bcrypt.hash(password, 10);
-      await queries.addNewUser(
-        firstName,
-        lastName,
+      const rowsToCheck = await queries.getUsersByUsernameAndPassword(
         username,
-        hashedPassword,
-        isAdminFlag
+        hashedPassword
       );
-      response.redirect("/");
+      if (rowsToCheck.length > 0) {
+        response.render("sign-up-form", {
+          errorsExist: { msg: "Username or password already exists." },
+        });
+      } else {
+        await queries.addNewUser(
+          firstName,
+          lastName,
+          username,
+          hashedPassword,
+          isAdminFlag
+        );
+        response.redirect("/");
+      }
     }
   },
 ];
