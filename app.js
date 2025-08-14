@@ -78,6 +78,10 @@ app.get("/sign-up", (request, response) => {
 
 app.post("/sign-up", signUpPostArray);
 
+app.get("/log-in", (request, response) => {
+  response.render("log-in-form");
+});
+
 app.listen(PORT, () =>
   console.log(`Server was launched at http://localhost:${PORT}/`)
 );

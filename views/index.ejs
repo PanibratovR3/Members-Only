@@ -6,6 +6,12 @@
     </head>
     <body>
         <h1>Clubhouse</h1>
+        <% if (locals.user) { %>
+            <h2>Welcome, <%= user.username %></h2>
+        <% } else { %>
+            <h2>You are not logged in.</h2>
+            <a href="/log-in">Log in</a>
+        <% }; %>
         <p>First time? <a href="/sign-up">Sign up.</a></p>
     </body>
 </html>
