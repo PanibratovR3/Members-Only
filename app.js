@@ -5,7 +5,6 @@ const bcrypt = require("bcryptjs");
 const queries = require("./db/queries");
 const session = require("express-session");
 const passport = require("passport");
-const pool = require("./db/pool");
 const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
@@ -182,6 +181,12 @@ app.post("/new-message", async (request, response) => {
   } else {
     response.redirect("/");
   }
+});
+
+app.post("/messages/:id/delete", async (request, response) => {
+  const { id } = request.params;
+  await queries.deleteMessage(Number(id));
+  response.redirect("/");
 });
 
 app.listen(PORT, () =>

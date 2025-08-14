@@ -55,6 +55,10 @@ async function getAllMessages() {
   return rows;
 }
 
+async function deleteMessage(id) {
+  await pool.query("DELETE FROM messages WHERE id = $1", [id]);
+}
+
 module.exports = {
   addNewUser,
   getUserByUsername,
@@ -63,4 +67,5 @@ module.exports = {
   giveMembershipToUser,
   createMessage,
   getAllMessages,
+  deleteMessage,
 };
