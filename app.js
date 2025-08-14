@@ -81,8 +81,9 @@ const validateNewUser = [
 ];
 const PORT = 3000;
 
-app.get("/", (request, response) => {
-  response.render("index", { user: request.user });
+app.get("/", async (request, response) => {
+  const messages = await queries.getAllMessages();
+  response.render("index", { user: request.user, messages: messages });
 });
 
 const signUpPostArray = [

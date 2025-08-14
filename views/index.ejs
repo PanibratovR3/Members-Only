@@ -17,7 +17,21 @@
         <% } else { %>
             <h2>You are not logged in.</h2>
             <a href="/log-in">Log in</a>
+            <p>First time? <a href="/sign-up">Sign up.</a></p>
         <% }; %>
-        <p>First time? <a href="/sign-up">Sign up.</a></p>
+        <div>
+            <% if (locals.messages) {%>
+                <% messages.forEach((message) => { %>
+                    <div>
+                        <div class="title">
+                            <%= message.title %>
+                        </div>
+                        <div class="message">
+                            <%= message.message %>
+                        </div>
+                    </div>
+                <% }); %>
+            <% }; %>
+        </div>
     </body>
 </html>

@@ -38,6 +38,23 @@ async function createMessage(userId, title, message) {
   );
 }
 
+async function getAllMessages() {
+  const SQL = `
+    SELECT 
+        messages.Id,
+        users.FirstName,
+        users.LastName,
+        users.Username,
+        messages.Title,
+        messages.MessageTime,
+        messages.Message
+    FROM messages
+    INNER JOIN users ON messages.UserId = users.Id;    
+  `;
+  const { rows } = await pool.query(SQL);
+  return rows;
+}
+
 module.exports = {
   addNewUser,
   getUserByUsername,
@@ -45,4 +62,5 @@ module.exports = {
   getUsersByUsernameAndPassword,
   giveMembershipToUser,
   createMessage,
+  getAllMessages,
 };
