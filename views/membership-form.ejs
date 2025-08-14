@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Question</title>
+    </head>
+    <body>
+        <h1>To become a member, you need ti answer one question.</h1>
+        <ul>
+            <% if (locals.error) { %>
+                <li><%= error.msg %></li>
+            <% }; %>
+        </ul>
+        <div>
+            <form action="/membership" method="POST">
+                <div>
+                    <label for="answer">Who guides us?</label>
+                    <input type="text" name="answer" id="answer" required />
+                </div>
+                <button class="submit">Submit</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -27,9 +27,14 @@ async function getUsersByUsernameAndPassword(username, password) {
   return rows;
 }
 
+async function giveMembershipToUser(id) {
+  await pool.query("UPDATE users SET ismember = TRUE WHERE id = $1", [id]);
+}
+
 module.exports = {
   addNewUser,
   getUserByUsername,
   getUserById,
   getUsersByUsernameAndPassword,
+  giveMembershipToUser,
 };

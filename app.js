@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const queries = require("./db/queries");
 const session = require("express-session");
 const passport = require("passport");
+const pool = require("./db/pool");
 const LocalStrategy = require("passport-local").Strategy;
 
 const app = express();
@@ -148,6 +149,24 @@ app.get("/log-out", (request, response, next) => {
 app.use((error, request, response, next) => {
   console.error("ERROR!");
   console.error(error.name, " : ", error.message);
+});
+
+app.get("/membership", (request, response) => {
+  response.render("membership-form");
+});
+
+app.post("/membership", async (request, response) => {
+  const { answer } = request.body;
+  if (answer === process.env.MEMBERSHIP_ANSWER && request.isAuthenticated()) {
+    await queries.giveMembershipToUser(request.user.id);
+    response.redirect("/");
+  } else if (!request.isAuthenticated()) {
+    response.redirect("/");
+  } else {
+    response.render("membership-form", {
+      error: { msg: "Incorrect answer. Try again." },
+    });
+  }
 });
 
 app.listen(PORT, () =>
