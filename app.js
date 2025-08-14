@@ -169,6 +169,20 @@ app.post("/membership", async (request, response) => {
   }
 });
 
+app.get("/new-message", (request, response) => {
+  response.render("new-message-form");
+});
+
+app.post("/new-message", async (request, response) => {
+  const { title, message } = request.body;
+  if (request.isAuthenticated()) {
+    await queries.createMessage(request.user.id, title, message);
+    response.redirect("/");
+  } else {
+    response.redirect("/");
+  }
+});
+
 app.listen(PORT, () =>
   console.log(`Server was launched at http://localhost:${PORT}/`)
 );

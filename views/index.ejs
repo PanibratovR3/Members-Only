@@ -8,11 +8,12 @@
         <h1>Clubhouse</h1>
         <% if (locals.user) { %>
             <h2>Welcome, <%= user.username %></h2>
-            <div><a href="/log-out">Log out</a></div>
+            <div><a href="/new-message">Add new message</a></div>
             <% if (!user.ismember) { %>
                 <div>You are not a member of this club.</div>
                 <div><a href="/membership">Join the club.</a></div>
             <% }; %>
+            <div><a href="/log-out">Log out</a></div>
         <% } else { %>
             <h2>You are not logged in.</h2>
             <a href="/log-in">Log in</a>

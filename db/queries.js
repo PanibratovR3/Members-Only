@@ -31,10 +31,18 @@ async function giveMembershipToUser(id) {
   await pool.query("UPDATE users SET ismember = TRUE WHERE id = $1", [id]);
 }
 
+async function createMessage(userId, title, message) {
+  await pool.query(
+    "INSERT INTO messages(userid, title, messagetime, message) VALUES($1, $2, NOW(), $3)",
+    [userId, title, message]
+  );
+}
+
 module.exports = {
   addNewUser,
   getUserByUsername,
   getUserById,
   getUsersByUsernameAndPassword,
   giveMembershipToUser,
+  createMessage,
 };
