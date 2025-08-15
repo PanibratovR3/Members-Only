@@ -3,46 +3,47 @@
     <head>
         <meta charset="UTF-8" />
         <title>Clubhouse</title>
+        <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>Clubhouse</h1>
+        <div class="header">Clubhouse</div>
         <% if (locals.user) { %>
-            <h2>Welcome, <%= user.username %>.</h2>
-            <div><a href="/new-message">Add new message</a></div>
+            <div class="welcome-header">Welcome, <%= user.username %>.</div>
+            <div class="main-row add-message"><a href="/new-message">Add new message</a></div>
             <% if (!user.ismember) { %>
-                <div>You are not a member of this club.</div>
-                <div><a href="/membership">Join the club.</a></div>
+                <div class="main-row not-member">You are not a member of this club.</div>
+                <div class="main-row join-club"><a href="/membership">Join the club</a></div>
             <% }; %>
-            <div><a href="/log-out">Log out</a></div>
+            <div class="main-row log-out"><a href="/log-out">Log out</a></div>
         <% } else { %>
-            <h2>You are not logged in.</h2>
-            <a href="/log-in">Log in</a>
-            <p>First time? <a href="/sign-up">Sign up.</a></p>
+            <div class="not-logged-header">You are not logged in.</div>
+            <div class="main-row log-in"><a href="/log-in">Log in</a></div>
+            <div class="main-row sign-up">First time? <a href="/sign-up">Sign up.</a></div>
         <% }; %>
-        <div>
+        <div class="message-container">
             <% if (locals.messages) {%>
                 <% messages.forEach((message) => { %>
-                    <div>
+                    <div class="message">
                         <% if (locals.user && user.ismember) { %>
-                            <div class="from">
+                            <div class="message-from">
                                 Message from <%= message.firstname %> <%= message.lastname %> (<%= message.username %>)
                             </div>
                         <% }; %>
-                        <div class="title">
+                        <div class="message-title">
                             <%= message.title %>
                         </div>
-                        <div class="message">
+                        <div class="message-text">
                             <%= message.message %>
                         </div>
                         <% if (locals.user && user.ismember) { %>
-                            <div class="timestamp">
+                            <div class="message-timestamp">
                                 Posted: <%= message.messagetime.toUTCString() %>
                             </div>
                         <% }; %>
                         <% if (locals.user && user.ismember && user.isadmin) { %>
                             <div class="delete-container">
                                 <form action="/messages/<%= message.id %>/delete" method="POST">
-                                    <button type="submit">Delete message</button>
+                                    <button type="submit" class="delete-message-button">Delete message</button>
                                 </form>
                             </div>
                         <% }; %>
