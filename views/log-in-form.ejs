@@ -2,21 +2,25 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <h1>Log in</h1>
-        <div>
+        <title>Log in</title>
+        <link rel="stylesheet" href="/style.css" />
+    </head>
+    <body>
+        <div class="header">Log in</div>
+        <div class="form-container">
             <form action="/log-in" method="POST">
-                <div>
+                <div class="form-row">
                     <label for="username">Username:</label>
                     <input type="email" name="username" id="username" required placeholder="jdoe@templar.com" maxlength="50"/>
                 </div>
-                <div>
+                <div class="form-row">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required />
                 </div>
-                <div >
-                    <button type="submit">Log in</button>
+                <div class="form-row-log-in">
+                    <button type="submit" class="log-in-button">Log in</button>
                 </div>
             </form>
-        </div>
-    </head>
+        </div>        
+    </body>
 </html>

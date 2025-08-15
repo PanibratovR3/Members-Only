@@ -111,12 +111,18 @@ a:link, a:visited {
 }
 
 .form-container {
-    margin: 0 320px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .form-row {
     display: flex;
     justify-content: space-between;
+    margin: 0 35vw;
+}
+
+.form-row label {
+    font-size: 0.9rem;
 }
 
 .form-row-admin, .form-row-sign-up-submit {
@@ -143,8 +149,18 @@ input[type="checkbox"] + label {
     font-size: 1.3rem;
 }
 
-label {
-    font-size: 1.1rem;
+.form-row-log-in {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.log-in-button {
+    padding: 10px;
+    font-size: 2rem;
+    background-color: navy;
+    color: white;
+    font-weight: bold;
 }
 
 .error {
