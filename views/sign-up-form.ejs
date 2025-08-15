@@ -3,49 +3,50 @@
     <head>
         <meta charset="UTF-8" />
         <title>Sign Up</title>
+        <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>Sign Up</h1>
+        <div class="header">Sign Up</div>
         <ul>
             <% if (locals.errors) { %>
                 <% errors.forEach((error) => { %>
-                    <li><%= error.msg %></li>
+                    <li class="error"><%= error.msg %></li>
                 <% }); %>
             <% }; %>
         </ul>
         <ul>
             <% if (locals.errorsExist) { %>
-                <li><%= errorsExist.msg %></li>
+                <li class="error"><%= errorsExist.msg %></li>
             <% }; %>
         </ul>
-        <div>
+        <div class="form-container">
             <form action="/sign-up" method="POST">
-                <div>
+                <div class="form-row">
                     <label for="first-name">First name:</label>
                     <input type="text" name="firstName" id="first-name" placeholder="John" maxlength="10" required />
                 </div>
-                <div>
+                <div class="form-row">
                     <label for="last-name">Last name:</label>
                     <input type="text" name="lastName" id="last-name" placeholder="Doe" maxlength="10" required />
                 </div>
-                <div>
+                <div class="form-row">
                     <label for="username">Username:</label>
                     <input type="email" name="username" id="username" placeholder="jdoe@templar.com" required maxlength="50" />
                 </div>
-                <div>
+                <div class="form-row">
                     <label for="password">Password:</label>
                     <input type="password" name="password" id="password" required />
                 </div>
-                <div>
+                <div class="form-row">
                     <label for="confirm-password">Confirm password:</label>
                     <input type="password" name="confirmPassword" id="confirm-password" required />
                 </div>
-                <div>
+                <div class="form-row-admin">
                     <input type="checkbox" name="isAdmin" id="is-admin" />
                     <label for="is-admin">I want to be an admin</label>
                 </div>
-                <div>
-                    <button type="submit">Sign up</button>
+                <div class="form-row-sign-up-submit">
+                    <button type="submit" class="sign-up-button">Sign up</button>
                 </div>
             </form>
         </div>

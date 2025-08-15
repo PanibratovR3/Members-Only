@@ -110,6 +110,51 @@ a:link, a:visited {
     font-size: 1.5rem;
 }
 
+.form-container {
+    margin: 0 320px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-row-admin, .form-row-sign-up-submit {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 0;
+}
+
+.sign-up-button {
+    padding: 10px;
+    font-size: 1.1rem;
+    background-color: darkmagenta;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+input, textarea {
+    font: inherit;
+}
+
+input[type="checkbox"] + label {
+    font-size: 1.3rem;
+}
+
+label {
+    font-size: 1.1rem;
+}
+
+.error {
+    text-align: center;
+    color: #c72424;
+    font-weight: bold;
+    padding: 10px 0;
+    font-size: 1.3rem;
+}
+
 a:hover {
     text-decoration: none;
 }
