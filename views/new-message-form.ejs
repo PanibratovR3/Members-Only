@@ -3,21 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>Add new message</title>
+        <link rel="stylesheet" href="/style.css" >
     </head>
     <body>
-        <h1>Add new message</h1>
-        <div>
+        <div class="header">Add new message</div>
+        <div class="form-container">
             <form action="/new-message" method="POST">
-                <div>
+                <div class="form-row">
                     <label for="title">Title:</label>
                     <input type="text" name="title" id="title" required maxlength="30" />
                 </div>
-                <div>
+                <div class="form-row text-message-row">
                     <label for="message">Message:</label>
                     <textarea name="message" id="message" required></textarea>
                 </div>
-                <div>
-                    <button type="submit">Add new message</button>
+                <div class="add-message-container">
+                    <button type="submit" class="add-message-button">Add new message</button>
                 </div>
             </form>
         </div>

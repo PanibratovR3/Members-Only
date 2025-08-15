@@ -119,6 +119,7 @@ a:link, a:visited {
     display: flex;
     justify-content: space-between;
     margin: 0 35vw;
+    padding: 10px;
 }
 
 .form-row label {
@@ -160,6 +161,30 @@ input[type="checkbox"] + label {
     font-size: 2rem;
     background-color: navy;
     color: white;
+    font-weight: bold;
+}
+
+.text-message-row label{
+    vertical-align: middle;
+    padding-top: 10px;
+}
+
+
+textarea {
+    resize: none;
+    min-width: 165px;
+    min-height: 100px;
+}
+
+.add-message-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.add-message-button {
+    font-size: 1.2rem;
+    padding: 5px 10px;
     font-weight: bold;
 }
 
