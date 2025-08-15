@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #f3ceba;
+}
+
 .header {
     text-align: center;
     font-weight: bold;
@@ -63,7 +67,7 @@ a:link, a:visited {
 }
 
 .message {
-    margin: 0 50px;
+    margin: 0 20vw;
     border: 3px solid black;
     background-color: #FCF5E5;
     color: darkred;
@@ -162,6 +166,7 @@ input[type="checkbox"] + label {
     background-color: navy;
     color: white;
     font-weight: bold;
+    border-radius: 10px;
 }
 
 .text-message-row label{
