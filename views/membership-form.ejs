@@ -3,21 +3,24 @@
     <head>
         <meta charset="UTF-8" />
         <title>Question</title>
+        <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>To become a member, you need ti answer one question.</h1>
+        <div class="header">To become a member, you need to answer one question.</div>
         <ul>
             <% if (locals.error) { %>
-                <li><%= error.msg %></li>
+                <li class="error"><%= error.msg %></li>
             <% }; %>
         </ul>
-        <div>
+        <div class="form-container">
             <form action="/membership" method="POST">
-                <div>
+                <div class="membership-form-row">
                     <label for="answer">Who guides us?</label>
                     <input type="text" name="answer" id="answer" required maxlength="27"/>
                 </div>
-                <button class="submit">Submit</button>
+                <div class="membership-form-row">
+                    <button class="submit-answer-button">Submit</button>
+                </div>
             </form>
         </div>
     </body>

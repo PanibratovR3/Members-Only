@@ -136,7 +136,7 @@ a:link, a:visited {
 .sign-up-button {
     padding: 10px;
     font-size: 1.1rem;
-    background-color: darkmagenta;
+    background-color: darkviolet;
     color: white;
     font-weight: bold;
     border-radius: 10px;
@@ -188,6 +188,26 @@ textarea {
     font-weight: bold;
 }
 
+.membership-form-row {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    gap: 16px;
+}
+
+.membership-form-row input {
+    min-width: 250px;
+}
+
+.submit-answer-button {
+    padding: 10px 15px;
+    font-size: 1.3rem;
+    background-color: darkviolet;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
 .error {
     text-align: center;
     color: #c72424;
@@ -198,4 +218,8 @@ textarea {
 
 a:hover {
     text-decoration: none;
+}
+
+button:hover {
+    opacity: 0.6;
 }
