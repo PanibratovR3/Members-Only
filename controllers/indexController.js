@@ -5,7 +5,7 @@ require("dotenv").config({ quiet: true });
 
 const nameAlphabetError = "must contain only letters";
 const nameMinimumLengthError = "must contain at least 3 letters.";
-const usernameEmailError = "must be in the format of email.";
+const usernameEmailError = "must contain domain 'templar.com'.";
 const passwordMinimunLenghtError = "must contain at least 7 symbols.";
 const passwordSpaceError = "must not contain spaces in the middle.";
 
@@ -24,7 +24,7 @@ const validateNewUser = [
     .withMessage(`Last name ${nameMinimumLengthError}`),
   body("username")
     .trim()
-    .isEmail()
+    .contains("templar.com")
     .withMessage(`Username ${usernameEmailError}`),
   body("password")
     .trim()
