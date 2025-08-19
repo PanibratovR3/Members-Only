@@ -67,7 +67,7 @@ a:link, a:visited {
 }
 
 .message {
-    margin: 0 20vw;
+    margin: 5vh 20vw;
     border: 3px solid black;
     background-color: #FCF5E5;
     color: darkred;

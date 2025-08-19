@@ -11,7 +11,7 @@
             <div class="welcome-header">Welcome, <%= user.username %>.</div>
             <div class="main-row add-message"><a href="/new-message">Add new message</a></div>
             <% if (!user.ismember) { %>
-                <div class="main-row not-member">You are not a member of this club.</div>
+                <div class="main-row not-member">You are not a member of this club. You can't see authors of messages and date of creation of message.</div>
                 <div class="main-row join-club"><a href="/membership">Join the club</a></div>
             <% }; %>
             <div class="main-row log-out"><a href="/log-out">Log out</a></div>
